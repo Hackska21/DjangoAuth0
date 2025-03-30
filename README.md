@@ -89,10 +89,10 @@ The docker exec command allows you to run commands inside a Docker container. Th
 ### Get a  user token
 
 ```http
-POST /auth0/public/get_user_token
+POST /auth0/public/get_user_token/
 {
 	"username":"example@mail.com",
-	"password:"abcPASS123!"
+	"password":"abcPASS123!"
 }
 ```
 Note: The user must already exist on auth0
