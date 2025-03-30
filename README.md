@@ -1,8 +1,6 @@
-# Simple Employee Management Django + React
+# Simple Auth0 Implementation
 
-Carry out simple employee management (CRUD). using Django as Backend and React as Frontend
 
-# What I do?
 
 ## Structure
 
@@ -20,15 +18,21 @@ api/  \
 │  ├─ urls.py (app urls)\
 │  ├─ views.py \
 ├─ templates/ (django templates)\
-├─ users_management_django_react/\
+├─ DjangoAuth0/\
 │  ├─ __init__.py\
 │  ├─ asgi.py\
-│  ├─ settings.py  (django config)\
+│  ├─ settings.py  (django main config)\
+│  ├─ ├─  __init__.py\ (start point of config) \
+│  ├─ ├─ Components\
+│  ├─ ├─ ├─ auth0.py (auth0 configs)\
+│  ├─ ├─ ├─ auth0.py (drf configs)\
+│  ├─ ├─ ├─ common.py (utilities for configs)\
 │  ├─ urls.py   (root of urls)\
 │  ├─ wsgi.py\
 ├─ .env\
 ├─ __init__.py\
 ├─ Dockerfile\
+├─ Docker-compose\
 ├─ manage.py\
 ├─ requirements.txt\
 
