@@ -12,9 +12,8 @@ AUTH0_DOMAIN = settings.AUTH0_DOMAIN
 AUTH0_API_ID = settings.AUTH0_API_ID
 
 AUTH0_MTM_CLIENT_SECRET = settings.AUTH0_MTM_CLIENT_SECRET
-AUTH0_MTM_CLIENT_ID=settings.AUTH0_MTM_CLIENT_ID
+AUTH0_MTM_CLIENT_ID = settings.AUTH0_MTM_CLIENT_ID
 
-AUTH0_LOGIN_DOMAIN = settings.AUTH0_LOGIN_DOMAIN
 AUTH0_APP_CLIENT_SECRET = settings.AUTH0_APP_CLIENT_SECRET
 AUTH0_APP_CLIENT_ID = settings.AUTH0_APP_CLIENT_ID
 
@@ -23,6 +22,7 @@ def jwt_get_username_from_payload_handler(payload):
     username = payload.get('sub').replace('|', '.')
     authenticate(remote_user=username)
     return username
+
 
 def jwt_decode_token(token):
     header = jwt.get_unverified_header(token)
@@ -42,13 +42,12 @@ def jwt_decode_token(token):
 def get_machine_to_machine_token():
     conn = http.client.HTTPSConnection("dev-d8bmthb8ix428twj.us.auth0.com")
 
-    payload ={
-        "client_id":AUTH0_MTM_CLIENT_ID,
-        "client_secret":AUTH0_MTM_CLIENT_SECRET,
-        "audience":AUTH0_API_ID,
-        "grant_type":"client_credentials"
+    payload = {
+        "client_id": AUTH0_MTM_CLIENT_ID,
+        "client_secret": AUTH0_MTM_CLIENT_SECRET,
+        "audience": AUTH0_API_ID,
+        "grant_type": "client_credentials"
     }
-
 
     headers = {'content-type': "application/json"}
 
@@ -58,17 +57,18 @@ def get_machine_to_machine_token():
     data = res.read()
     return data.decode("utf-8")
 
-def get_user_token(username,password):
+
+def get_user_token(username, password):
     response = requests.post(
-        url="https://{}/oauth/token".format(AUTH0_LOGIN_DOMAIN),
+        url="https://{}/oauth/token".format(AUTH0_DOMAIN),
         data={
-            "grant_type":"password",
-            "username":username,
-            "password":password,
-            "client_id":AUTH0_APP_CLIENT_ID,
-            "client_secret":AUTH0_APP_CLIENT_SECRET,
-            "audience":AUTH0_API_ID,
-            "scope":"openid profile email"
+            "grant_type": "password",
+            "username": username,
+            "password": password,
+            "client_id": AUTH0_APP_CLIENT_ID,
+            "client_secret": AUTH0_APP_CLIENT_SECRET,
+            "audience": AUTH0_API_ID,
+            "scope": "openid profile email"
         },
         headers={'content-type': "application/x-www-form-urlencoded"}
     )

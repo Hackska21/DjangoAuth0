@@ -10,16 +10,11 @@ services:
     container_name: django_service
     command: >
       sh -c "python manage.py migrate &&
-      python manage.py createsuperuser --noinput &&
       python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ".:/src"
     env_file:
       - .env
-    environment:
-      DJANGO_SUPERUSER_PASSWORD: "admin"
-      DJANGO_SUPERUSER_USERNAME: "root"
-      DJANGO_SUPERUSER_EMAIL: "email@example.com"
     ports:
       - "8000:8000"
     depends_on:
