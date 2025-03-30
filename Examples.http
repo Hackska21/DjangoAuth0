@@ -9,3 +9,6 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjN1VF9USnRlUH
 ###
 
 GET http://localhost:8000/auth0/public/
+
+### Machine to machine tocken
+GET http://localhost:8000/auth0/public/get_token

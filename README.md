@@ -97,7 +97,7 @@ POST /auth0/public/get_user_token
 ```
 Note: The user must already exist on auth0
 
-### Get machine to machine token
+### Get machine to machine token (This service is cached)
 ```http
 GET /auth0/public/get_token
 ```
